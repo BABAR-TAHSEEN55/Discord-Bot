@@ -1,4 +1,7 @@
 import { Client, GatewayIntentBits } from "discord.js";
+import dotenv from "dotenv";
+dotenv.config();
+
 const client = new Client({
   intents: [
     GatewayIntentBits.Guilds,
@@ -9,9 +12,7 @@ const client = new Client({
 
 client.on("messageCreate", (message) => {
   if (message.author.bot) return;
-  message.reply(`Welcome ${message.author}`);
+  message.reply(`Welcome ${message.author} `);
 });
 
-client.login(
-  "MTMwNjE5NTUyOTU0OTYxNTIyNQ.Go-W8k.kIUnz4DOFE7Tk2kWLsWOr1MxdIDXTnmRu2_90E"
-);
+client.login(process.env.Client);
