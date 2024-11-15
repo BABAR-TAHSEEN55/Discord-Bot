@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { Client, GatewayIntentBits } from "discord.js";
 import dotenv from "dotenv";
 dotenv.config();
@@ -16,3 +17,5 @@ client.on("messageCreate", (message) => {
 });
 
 client.login(process.env.Client);
+=======
+>>>>>>> parent of b3a8dad (Discord Bot Created Successfully)
