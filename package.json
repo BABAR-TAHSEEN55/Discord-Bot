@@ -10,12 +10,10 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-<<<<<<< HEAD
+
     "discord.js": "^14.16.3",
     "dotenv": "^16.4.5",
     "nodemon": "^3.1.7"
-=======
-    "discord.js": "^14.16.3"
->>>>>>> parent of b3a8dad (Discord Bot Created Successfully)
+
   }
 }
