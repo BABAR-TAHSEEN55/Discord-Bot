@@ -2,13 +2,12 @@ import { Client, GatewayIntentBits } from "discord.js";
 import dotenv from "dotenv";
 import {
   GoogleGenerativeAI,
-  HarmCategory,
   HarmBlockThreshold,
+  HarmCategory,
 } from "@google/generative-ai";
 
 dotenv.config();
 
-// Initialize Google AI client
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 const model = genAI.getGenerativeModel({
   model: "gemini-pro",
@@ -41,23 +40,21 @@ const client = new Client({
 });
 
 client.on("messageCreate", async (message) => {
-  // Ignore bot messages
   if (message.author.bot) return;
 
   try {
     const generationConfig = {
-      temperature: 0.9,
+      temperature: 0.9, // Temperature controls the randomness of the words : Higher the value , higher is the creativity
       maxOutputTokens: 500,
     };
 
-    // Send message to Gemini and get response
     const result = await model.generateContent({
       contents: [
         {
           role: "user",
           parts: [
             {
-              text: `Be as rude as possible : ${message.content}`,
+              text: `You are an Anime Character. Be as rude as Possible and give cheesy answers : ${message.content}`,
             },
           ],
         },
@@ -65,10 +62,8 @@ client.on("messageCreate", async (message) => {
       generationConfig,
     });
 
-    // Get the response text
     const response = result.response.text();
 
-    // Reply to Discord message
     message.reply(response);
   } catch (error) {
     console.error("Gemini API Error:", error);
